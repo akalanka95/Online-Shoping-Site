@@ -70,6 +70,11 @@
 				<%@include file="contact.jsp"%>
 				<!-- /.container -->
 			</c:if>
+			
+			<c:if test="${userclickallproducts == true or userclickcategoryproducts == true }">
+				<%@include file="listproduct.jsp"%>
+				<!-- /.container -->
+			</c:if>
 
 		</div>
 

@@ -6,15 +6,18 @@ $(function(){
 	  $('#about').addClass('active');
 	  break;
 	
-	case 'Products':
-		  $('#products').addClass('active');
+	case 'Home':
+		  $('#home').addClass('active');
 		  break;
 	
 	case 'Contact':
 		  $('#contact').addClass('active');
 		  break;
+		 
+		  
 	default:
-		 $('#home').addClass('active');
+		 $('#products').addClass('active');
+	 	 $('#a_'+menu).addClass('active');
 		 break;
 	
 	}
