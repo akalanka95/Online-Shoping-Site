@@ -12,9 +12,36 @@ public class PageController {
 	@RequestMapping(value = { "/", "home", "index" })
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("greeting","Welcome to spring mvc");
+		mv.addObject("title","Home");
+		mv.addObject("userclickhome",true);
 		return mv;
 	}
+	
+	@RequestMapping(value = "/about")
+	public ModelAndView about() {
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title","About us");
+		mv.addObject("userclickabout",true);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/listproducts")
+	public ModelAndView listproducts() {
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title","Poducts");
+		mv.addObject("userclickproduct",true);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/contact")
+	public ModelAndView contact() {
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title","Contact");
+		mv.addObject("userclickcontact",true);
+		return mv;
+	}
+	
+	
 	
 	/*@RequestMapping(value = "/test")
 	public ModelAndView test(@RequestParam(value="greeting", required=false)String greeting) {
