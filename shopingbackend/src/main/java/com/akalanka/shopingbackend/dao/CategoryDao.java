@@ -6,6 +6,9 @@ import com.akalanka.shopingbackend.dto.Category;
 
 public interface CategoryDao {
 
-	List<Category> list();
 	Category get(int id);
+	List<Category> list();
+	boolean add(Category category);
+	boolean update(Category category);
+	boolean delete(Category category);
 }

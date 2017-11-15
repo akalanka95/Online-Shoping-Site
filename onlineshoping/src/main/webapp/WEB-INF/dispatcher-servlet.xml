@@ -13,7 +13,7 @@
    " >
    
    <context:component-scan base-package="com.akalanka.onlineshoping.controller"></context:component-scan>
-   <context:component-scan base-package="com.akalanka.shopingbackend.daoim"></context:component-scan>
+   <context:component-scan base-package="com.akalanka.shopingbackend"></context:component-scan>
    
    <bean id="viewResolver"
    			class="org.springframework.web.servlet.view.InternalResourceViewResolver">
