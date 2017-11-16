@@ -26,6 +26,7 @@
 
 <script>
 	window.menu = '${title}';
+	window.root ='${contextroot}';
 </script>
 
 <!-- Bootstrap core CSS -->
@@ -34,8 +35,14 @@
 <!-- Bootswatch theme -->
 <link href="${css}/bootswatchtheme.css" rel="stylesheet">
 
+
+<!-- Bootswatch for the dataTable -->
+<link href="${css}/dataTables.bootstrap4.css" rel="stylesheet">
+
+
 <!-- Custom styles for this template -->
 <link href="${css}/shop-homepage.css" rel="stylesheet">
+
 
 
 
@@ -75,6 +82,11 @@
 				<%@include file="listproduct.jsp"%>
 				<!-- /.container -->
 			</c:if>
+			
+			<c:if test="${userclicksinglepageproduct == true}">
+				<%@include file="singlePage.jsp"%>
+				<!-- /.container -->
+			</c:if>
 
 		</div>
 
@@ -86,6 +98,13 @@
 		<!-- Bootstrap core JavaScript -->
 		<script src="${js }/jquery.js"></script>
 		<script src="${js }/bootstrap.bundle.min.js"></script>
+		
+		<script src="${js }/jquery.dataTables.js"></script>
+		<script src="${js }/dataTables.bootstrap4.js"></script>
+		
+       <script src="https://use.fontawesome.com/9d011fdd6d.js"></script>
+		
+		
 		<script src="${js }/myapp.js"></script>
 
 	</div>

@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.akalanka.shopingbackend.dao.CategoryDao;
+import com.akalanka.shopingbackend.dao.ProductsDao;
 import com.akalanka.shopingbackend.dto.Category;
+import com.akalanka.shopingbackend.dto.Products;
 
 @Controller
 public class PageController {
@@ -15,6 +17,8 @@ public class PageController {
 	@Autowired
 	private CategoryDao categoryDao;
 	
+	@Autowired
+	private ProductsDao productDao;
 	
 	@RequestMapping(value = { "/", "home", "index" })
 	public ModelAndView index() {
@@ -72,6 +76,26 @@ public class PageController {
 		mv.addObject("userclickcategoryproducts",true);
 		return mv;
 	}
+	
+	
+	@RequestMapping(value = "show/{id}/products")
+	public ModelAndView showsinglePageProduct(@PathVariable("id") int id) {
+		
+		Products product = null;
+		product = productDao.get(id);
+				
+		ModelAndView mv = new ModelAndView("page");
+		
+		//update view
+		product.setViews(product.getViews() + 1);
+		productDao.update(product);
+		
+		mv.addObject("title",product.getName());
+		mv.addObject("product",product);
+		mv.addObject("userclicksinglepageproduct",true);
+		return mv;
+	}
+	
 	/*@RequestMapping(value = "/test")
 	public ModelAndView test(@RequestParam(value="greeting", required=false)String greeting) {
 		ModelAndView mv = new ModelAndView("page");

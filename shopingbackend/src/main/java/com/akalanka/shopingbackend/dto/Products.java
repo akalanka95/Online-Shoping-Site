@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Products {
 
@@ -33,11 +35,15 @@ public class Products {
 	private String code;
 	private String name;
 	private String brand;
+	@JsonIgnore
 	private String description;
 	private double unit_price;
 	private int  quantity;
+	@JsonIgnore
 	private boolean is_active;
+	@JsonIgnore
 	private int category_id;
+	@JsonIgnore
 	private int supplier_id;
 	private int purchases;
 	private int views;
