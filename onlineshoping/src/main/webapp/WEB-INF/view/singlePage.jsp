@@ -24,9 +24,34 @@
 				<hr>
 				<h4>Price : <strong>&#8377; ${product.unit_price } /-</strong></h4>
 				<hr>
-				<h6>Qt Ava : <strong>${product.quantity }</strong></h6>
+				
+				<c:choose>
+					<c:when test="${product.quantity < 1}">
+						<h6>Qt Ava : <strong style="color:red">Out of Stock</strong></h6>
+										
+					</c:when>
+					<c:otherwise>
+						<h6>Qt Ava : <strong>${product.quantity }</strong></h6>
+						
+					</c:otherwise>
+				</c:choose>
 				<hr>
-				<a href="${contextroot }/cart/add/${product.id }/products" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;Add to Cart</i></a>
+				<c:choose>
+					<c:when test="${product.quantity < 1}">
+						
+						<a href="javascript:void(0)" class="btn btn-success disabled"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;<strike>Add to Cart</strike></i></a>
+				
+					</c:when>
+					<c:otherwise>
+						
+						<a href="${contextroot }/cart/add/${product.id }/products" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;Add to Cart</i></a>
+				
+					</c:otherwise>
+				</c:choose>
+				
+				
+				<!-- <a href="${contextroot }/cart/add/${product.id }/products" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true">&nbsp;Add to Cart</i></a>
+				 -->
 				&nbsp;<a href="${contextroot }/show/all/products" class="btn btn-success">Back</a>
 			
 		</div>

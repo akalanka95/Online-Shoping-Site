@@ -1,11 +1,14 @@
 package com.akalanka.onlineshoping.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.akalanka.onlineshoping.exception.ProductNotFoundException;
 import com.akalanka.shopingbackend.dao.CategoryDao;
 import com.akalanka.shopingbackend.dao.ProductsDao;
 import com.akalanka.shopingbackend.dto.Category;
@@ -14,6 +17,8 @@ import com.akalanka.shopingbackend.dto.Products;
 @Controller
 public class PageController {
 
+	private static final Logger logger = LoggerFactory.getLogger(PageController.class);
+	
 	@Autowired
 	private CategoryDao categoryDao;
 	
@@ -24,6 +29,8 @@ public class PageController {
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","Home");
+		logger.info("Inside PageContoller index method-INFO");
+		logger.debug("Inside PageContoller index method-DEBUG");
 		mv.addObject("categories",categoryDao.list());
 		mv.addObject("userclickhome",true);
 		return mv;
@@ -79,11 +86,13 @@ public class PageController {
 	
 	
 	@RequestMapping(value = "show/{id}/products")
-	public ModelAndView showsinglePageProduct(@PathVariable("id") int id) {
+	public ModelAndView showsinglePageProduct(@PathVariable("id") int id) throws ProductNotFoundException {
 		
 		Products product = null;
 		product = productDao.get(id);
 				
+		if(product == null) throw new ProductNotFoundException();
+		
 		ModelAndView mv = new ModelAndView("page");
 		
 		//update view
