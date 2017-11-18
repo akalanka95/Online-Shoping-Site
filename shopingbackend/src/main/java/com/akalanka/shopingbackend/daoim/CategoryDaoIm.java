@@ -55,7 +55,7 @@ public class CategoryDaoIm implements CategoryDao {
 		
 		String selectActiveCategory = "FROM Category WHERE is_active= :active"; 
 		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveCategory);
-		query.setParameter("active",false);
+		query.setParameter("active",true);
 		
 		return query.getResultList();
 	}

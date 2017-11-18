@@ -5,7 +5,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav">
             <li class="nav-item " id="home">
               <a class="nav-link" href="${contextroot}/home">Home
                 <span class="sr-only">(current)</span>
@@ -20,6 +20,18 @@
             <li class="nav-item" id="contact">
               <a class="nav-link" href="${contextroot}/contact">Contact</a>
             </li>
+             <li class="nav-item" id="manageProducts">
+              <a class="nav-link" href="${contextroot}/manage/products">Manage Products</a>
+            </li>
+          </ul>
+          <ul  class="nav navbar-nav ml-auto">
+          		<li class="nav-item" id="register">
+              <a class="nav-link" href="${contextroot}/register">Sign Up</a>
+           	</li>
+           	<li class="nav-item" id="login">
+              <a class="nav-link" href="${contextroot}/register">Login</a>
+           	</li>
+          	
           </ul>
         </div>
       </div>

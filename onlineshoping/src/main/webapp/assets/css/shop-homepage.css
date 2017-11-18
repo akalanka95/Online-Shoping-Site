@@ -6,9 +6,11 @@
 
 html{
 	height : 100%;
+	
 }
 body {
     
+  /*background :  url('../images/backgroundimage.jpg') no-repeat fixed center ;*/
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 	height :100%;
 }
@@ -82,7 +84,6 @@ footer {
 .dataTableImg{
 	width : 100px;
 	height :100px;
-	position : center;
 	
 }
 .check4{
@@ -91,3 +92,19 @@ footer {
 .check5{
 	background-color : white;
 }
+.help-block{
+	color : #ff0000;
+}
+
+.adminDataTableImage{
+	width : 100px;
+	height :100px;	
+}
+
+.bootbox .modal-header h4 {
+    order: 0;
+}
+.bootbox .modal-header button {
+    order: 1;
+}
+
