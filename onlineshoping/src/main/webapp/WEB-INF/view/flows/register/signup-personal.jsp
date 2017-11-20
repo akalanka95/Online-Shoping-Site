@@ -22,7 +22,8 @@
 						<div class="col-md-9">
 							<sf:input type="text" class="form-control" id="register_name"
 								path="firstName" placeholder="Enter First Name" />
-
+							<sf:errors path="firstName" cssClass="help-block" element="em"></sf:errors>
+							
 						</div>
 
 
@@ -36,7 +37,8 @@
 						<div class="col-md-9">
 							<sf:input type="text" class="form-control" id="register_lastname"
 								path="lastName" placeholder="Enter Last Name" />
-
+							<sf:errors path="lastName" cssClass="help-block" element="em"></sf:errors>
+							
 						</div>
 
 
@@ -50,7 +52,8 @@
 						<div class="col-md-9">
 							<sf:input type="email" class="form-control" id="register_email"
 								path="email" placeholder="Enter an Email" />
-
+							<sf:errors path="email" cssClass="help-block" element="em"></sf:errors>
+							
 						</div>
 
 
@@ -64,7 +67,8 @@
 						<div class="col-md-9">
 							<sf:input type="text" class="form-control" id="contactNumber"
 								path="contactNumber" placeholder="Enter Contact Number" />
-
+							<sf:errors path="contactNumber" cssClass="help-block" element="em"></sf:errors>
+							
 						</div>
 
 
@@ -77,7 +81,22 @@
 						<div class="col-md-9">
 							<sf:input type="password" class="form-control" id="password"
 								path="password" placeholder="Enter Password" />
+							<sf:errors path="password" cssClass="help-block" element="em"></sf:errors>
+							
+						</div>
 
+
+					</div>
+					
+					<div class="form-group row">
+
+						<label for="conpassword" class="col-md-3 col-form-label ">
+							Confirm Password </label>
+						<div class="col-md-9">
+							<sf:input type="password" class="form-control" id="conpassword"
+								path="confirmPassword" placeholder="Confirm Password" />
+							<sf:errors path="confirmPassword" cssClass="help-block" element="em"></sf:errors>
+							
 						</div>
 
 
@@ -89,10 +108,10 @@
 							Select Role </label>
 						<div class="col-md-9">
 							<label class="radio-inline"> <sf:radiobutton path="role"
-									value="USER" checked="checked"></sf:radiobutton>User
+									value="USER" checked="checked"></sf:radiobutton>&nbsp;User
 
 							</label>&nbsp;&nbsp;&nbsp;&nbsp; <label class="radio-inline"> <sf:radiobutton
-									path="role" value="SUPPLIER"></sf:radiobutton>SUPPLIER
+									path="role" value="SUPPLIER"></sf:radiobutton>&nbsp;SUPPLIER
 
 							</label>
 						</div>

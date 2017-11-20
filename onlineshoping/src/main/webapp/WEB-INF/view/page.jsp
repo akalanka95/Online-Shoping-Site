@@ -20,8 +20,10 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
+<meta name="_csrf" content="${_csrf.token }">
+<meta name="_csrf_header" content="${_csrf.headerName }">
 
-<title>Online Shoping - ${title}</title>
+<title>Online Shopping - ${title}</title>
 
 
 <script>
@@ -90,6 +92,11 @@
 			
 			<c:if test="${userclickmanageproducts == true}">
 				<%@include file="manageProduct.jsp"%>
+				<!-- /.container -->
+			</c:if>
+			
+			<c:if test="${userclickshowcart == true}">
+				<%@include file="cart.jsp"%>
 				<!-- /.container -->
 			</c:if>
 

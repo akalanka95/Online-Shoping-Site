@@ -12,9 +12,9 @@
 							<h6>You can use your email as username to login</h6>
 						</div>
 						<div>
-						
+						<div class="text-center">
 						<a href="${contextroot }/login" class="btn btn-lg btn-success">Login Here</a>
-						
+						</div>
 						</div>
 					
 					</div>

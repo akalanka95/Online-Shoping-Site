@@ -22,7 +22,7 @@ CREATE TABLE user_detail(
 	lastname VARCHAR(50),
 	role VARCHAR(50),
 	enabled BOOLEAN,
-	password VARCHAR(50),
+	password VARCHAR(60),
 	email VARCHAR(150),
 	contactnumber Varchar(50),
 	CONSTRAINT pk_user_detail_id PRIMARY KEY(id)
@@ -32,11 +32,11 @@ CREATE TABLE user_detail(
 
 INSERT INTO user_detail
 (firstname,lastname,role,enabled,password,email,contactnumber) 
-VALUES('Akalanka','gamage','ADMIN',true,'admin','akalankamaduka95@gmail.com','07676767');
+VALUES('Akalanka','gamage','ADMIN',true,'$2y$10$b/PRwFStR6LIGbC69Wsk2.DN3BTEdFzgRDiC2Iqy5i03ZjOCs4gda','am@gmail.com','07676767');
 
 INSERT INTO user_detail
 (firstname,lastname,role,enabled,password,email,contactnumber) 
-VALUES('vimukthi','gaamage','SUPPLIER',true,'sup','akalankaaamaduka95@gmail.com','0763376767');
+VALUES('vimukthi','gaamage','SUPPLIER',true,'$2y$10$UMFMNf/vpDjH9gKspDKIZe0bwTZU.V0f3NvR4WevN.pECNrOgViDy','akalankaaamaduka95@gmail.com','0763376767');
 
 INSERT INTO user_detail
 (firstname,lastname,role,enabled,password,email,contactnumber) 
@@ -69,3 +69,21 @@ INSERT INTO products
 VALUES('PDX123456','Drum2','Roland','best drum', 123.34,5,true,2,2);
 
 
+INSERT INTO address
+(address_line_one,address_line_two,billing,city,country,postal_code,shipping,state,user_id) 
+VALUES('PDX123456','Drum2','TRUE','best drum', 'sri lanka','12400','FALSE','sdsd',4);
+
+CREATE TABLE cart_line(
+
+	id IDENTITY,
+	cart_id int,
+	total DECIMAL(10,2),
+	product_id int,
+	product_count int,
+	buying_price DECIMAL(10,2),
+	is_available boolean,
+	
+	CONSTRAINT pk_cartline_id PRIMARY KEY(id),
+	CONSTRAINT fk_cartline_product_id FOREIGN KEY(product_id) REFERENCES product(id),
+	CONSTRAINT fk_cartline_cart_id FOREIGN KEY(cart_id) REFERENCES cart(id)
+);

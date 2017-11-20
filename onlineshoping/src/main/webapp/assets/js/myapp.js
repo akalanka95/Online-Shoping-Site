@@ -18,6 +18,10 @@ $(function(){
 		  $('#manageProducts').addClass('active');
 		  break;
 		  
+	case 'User Cart':
+		  $('#userCart').addClass('active');
+		  break;	  
+		  
 	default:
 		 $('#products').addClass('active');
 	 	 $('#a_'+menu).addClass('active');
@@ -26,6 +30,14 @@ $(function(){
 	}
 	
 	
+	var token = $('meta[name="_csrf"]').attr('content');
+	var header = $('meta[name="_csrf_header"]').attr('content');
+	
+	if(token.length > 0 && header.length > 0){
+		$(document).ajaxSend(function(e, xhr, options){
+			xhr.setRequestHeader(header,token);
+		});
+	}
 	
 	var $table = $('#productListTable');
 	
@@ -84,12 +96,23 @@ $(function(){
 		        			var str = '';
 		        			str += '<a href="'+window.root+'/show/'+data+'/products" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a> &nbsp';
 		        			
-		        			if(row.quantity <1){
-		        				str += '<a href="javascript:void(0)"  class="btn btn-success disabled"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>' ;
+		        			
+		        			
+		        			if(userRole == 'ADMIN' ){
+		        				str += '<a href="'+window.root+'/manage/'+data+'/products" class="btn btn-warning"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>' ;
 			        			
 		        			}else{
-		        				str += '<a href="'+window.root+'/cart/add/'+data+'/products" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>' ;
-			        			
+		        				
+		        				
+		        				if(row.quantity <1){
+		        					str += '<a href="javascript:void(0)"  class="btn btn-success disabled"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>' ;
+			        				
+		        				}else{
+		        					str += '<a href="'+window.root+'/cart/add/'+data+'/products" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>' ;
+				        			
+		        				}
+		        				
+		        				
 		        			}
 		        			
 		        			
@@ -276,6 +299,43 @@ var $adminProductTable = $('#adminProductsTable');
 				},
 				description:{
 					required : 'Please add a description!'
+				}
+			},
+			
+			errorElement : 'em',
+			errorPlacement : function(error , element){
+				error.addClass('help-block');
+				error.insertAfter(element);	
+			}
+		});
+		
+	}
+	
+	
+	var $loginForm = $('#loginForm');
+	if($loginForm.length){
+		$loginForm .validate({
+			
+			rules:{
+				username : {
+					required : true,
+					email : true
+				},
+				
+				password : {
+					required :true
+				}
+				
+			},
+			
+			messages :{
+				
+				username : {
+					required : 'Please enter the UserName!',
+					email : 'Please enter the valid Email Address!'
+				},
+				password:{
+					required : 'Please enter the password!'
 				}
 			},
 			
