@@ -13,7 +13,7 @@ public class CartController {
 		ModelAndView mv = new ModelAndView("page");
 		
 		mv.addObject("title" ,"User Cart");
-		mv.addObject("userclickshowcart",true);
+		
 		mv.addObject("cartLines",null);
 		
 		return mv;
